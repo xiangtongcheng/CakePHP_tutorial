@@ -11,13 +11,13 @@ This repository uses Docker Compose to create a CakePHP project.
 
 # Getting Started
 
-1. Clone this repository    
+## 1. Clone this repository    
 
 ```
 git clone https://github.com/MasatoIso/cake_project.git'
 ```
 
-2. Create .env file  
+## 2. Create .env file  
 Create .env file to set the DB connection.  
 Place the .env file in the same hierarchy as docker-compose.
 
@@ -31,14 +31,14 @@ MYSQL_PASSWORD=pass
 ```
 
 
-3. Run docker-compose up -d  
+## 3. Run docker-compose up -d  
 Run docker-compose up -d in the directory where docker-compose.yml exists.
 
 ```
 docker-compose up -d
 ```
 
-4. Create CakePHP project with Composer  
+## 4. Create CakePHP project with Composer  
 Enter the "app" container with the following command.
 
 ```
@@ -53,7 +53,9 @@ This time create a project named cake. If you change the project name, change th
 php /usr/bin/composer create-project --prefer-dist cakephp/app:^3.8 cake
 ```
 
-5. Connect MySQL  
+## 5. Connect MySQL  
+
+Rewrite Datasources.default in config/app.php in cake project.  
  
  ```php:config/app.php
  'host' => 'db',
