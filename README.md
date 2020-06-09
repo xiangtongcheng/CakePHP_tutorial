@@ -55,7 +55,7 @@ This time create a project named cake. If you change the project name, change th
 php /usr/bin/composer create-project --prefer-dist cakephp/app:^3.8 cake
 ```
 
-## 5. Connect MySQL  
+## 6. Connect MySQL  
 
 Rewrite Datasources.default in config/app.php in cake project.  
  
