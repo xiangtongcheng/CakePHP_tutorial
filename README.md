@@ -30,15 +30,17 @@ MYSQL_USER=db_user
 MYSQL_PASSWORD=pass
 ```
 
+## 3. Create "db-data" directory 
+Create "db-data" directory at the same level as docker-compose.yml.
 
-## 3. Run docker-compose up -d  
+## 4. Run docker-compose up -d  
 Run docker-compose up -d in the directory where docker-compose.yml exists.
 
 ```
 docker-compose up -d
 ```
 
-## 4. Create CakePHP project with Composer  
+## 5. Create CakePHP project with Composer  
 Enter the "app" container with the following command.
 
 ```
