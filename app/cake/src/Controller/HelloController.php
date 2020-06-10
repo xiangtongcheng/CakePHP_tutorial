@@ -5,21 +5,20 @@ use App\Controller\AppController;
 
 class HelloController extends AppController
 {
-    public function index($a = '', $b = '')
+    public function index()
     {
-        // aが空であればerrアクションにリダイレクトされる。
-        if ($a == ''){
-            $this->setAction('err');
-            return;
-        }
-        $this->autoRender = false;
-        echo "<html><head></head><body>";
-        echo "<h1>Hello!</h1>";
-        echo "<p>これは、サンプルで作成したページです。</p><p>";
-        // if ($a != '') {
-            echo " パラメータA: " . $a;
+        // $str = $this->request->data('text1');
+        // if ( $str != null ){
+        //     $str = $this->request->data['text1'];
+        //     $this->set('message', 'You typed:' . $str);
+        // } else {
+        //     $this->set('message', 'Please type...') ;
         // }
-        echo "</p></body></html>";
+
+        // クエリパラメータから値を受け取っている。
+        $id = $this->request->query('id');
+        $name = $this->request->query('name');
+        $this->set('message', 'Your id:' . $id . ', name:' . $name);
     }
 
     public function err()
