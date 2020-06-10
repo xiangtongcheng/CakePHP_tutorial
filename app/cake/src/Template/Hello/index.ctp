@@ -1,32 +1,41 @@
 <div>
     <h3> Index Page</h3>
     <p><?= $message ?></p>
-    <form method="post" action="/hello/index">
-    <input type="text" name="text1">
-    <input type="submit">
+    <?= $this->Form->create(null, [
+        'type' => 'post',
+        'url' => ['controller' => 'Hello', 'action' => 'index']]
+        ) ?>
+        <!-- テキストタグの生成 -->
+        <?= $this->Form->text('text1') ?>
+        <?= $this->Form->password('pw') ?>
+        <?= $this->Form->textarea('textarea') ?>
+        <?= $this->Form->checkbox('check', ['id' => 'check']) ?>
+        <?= $this->Form->label('check', 'check!!') ?>
+
+        <?=$this->Form->radio('radio',[
+        ['value'=>'男','text'=>'male','checked'=>true],
+        ['value'=>'女','text'=>'female']
+        ]) ?>
+        <?=$this->Form->select('select',[
+        ['value'=>'Mac','text'=>'Mac OS X'],
+        ['value'=>'Windows','text'=>'Windows 10'],
+        ['value'=>'Linux','text'=>'Linux']
+        ]) ?>
+        <?=$this->Form->select('select2',[
+        ['value'=>'Mac','text'=>'Mac OS X'],
+        ['value'=>'Windows','text'=>'Windows 10'],
+        ['value'=>'Linux','text'=>'Linux']
+        ],['multiple'=>true]) ?>
+        <?=$this->Form->date('date',[
+        'year'=>['style'=>'width:100px;'],
+        'month'=>['style'=>'width:100px;'],
+        'day'=>['style'=>'width:100px;']
+    ]) ?>
+    <?=$this->Form->time('time',[
+        'interval'=>5,
+        'hour'=>['style'=>'width:100px;']
+    ]) ?>
+        <?= $this->Form->Submit('OK') ?>
+        <?= $this->Form->end() ?>
     </form>
 </div>
-
-<script>
-  // CSRFトークン
-  var CSRF_TOKEN = "<?= $this->request->getParam('_csrfToken') ?>";
-
-  window.onload = function() {
-    // 各 <form> で method="post" なら CSRFトークンの <input> を末尾に追加
-    var forms = document.getElementsByTagName("form");
-    var length = forms.length;
-    for (var i = 0; i < forms.length; i++) {
-      var form = forms[i];
-      if (form.getAttribute("method") !== "post") {
-          continue;
-      }
-      // CSRFトークンの <input> を生成
-      var inputCsrf = document.createElement("input");
-      inputCsrf.setAttribute("type", "hidden");
-      inputCsrf.setAttribute("name", "_csrfToken");
-      inputCsrf.value = CSRF_TOKEN;
-      // <form> に追加
-      form.appendChild(inputCsrf);
-    }
-  };
-</script>
