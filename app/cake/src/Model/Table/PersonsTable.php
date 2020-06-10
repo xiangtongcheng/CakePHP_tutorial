@@ -30,8 +30,11 @@ class PersonsTable extends Table
     {
         parent::initialize($config);
 
+        // テーブルの指定　cakeが自動でテーブルを指定してくれるが、手動でも可能
         $this->setTable('persons');
+        // レコードの検索をして取り出すような時に利用される
         $this->setDisplayField('name');
+        // プライマリーキーの設定 なぜ指定するの？
         $this->setPrimaryKey('id');
     }
 
@@ -43,6 +46,7 @@ class PersonsTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
+        // バリデーションの設定
         $validator
             ->integer('id')
             ->allowEmptyString('id', null, 'create');
